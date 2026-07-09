@@ -73,6 +73,24 @@ A Python-based tool that scans web applications for common vulnerabilities.
 
 ---
 
+## 📄 My Resume
+
+<p align="center">
+  <a href="https://mdgouse123.github.io/my-resume/" target="_blank">
+    <img src="https://img.shields.io/badge/View%20Resume-1565C0?style=for-the-badge&logo=googlechrome&logoColor=white" />
+  </a>
+  &nbsp;
+  <a href="https://mdgouse123.github.io/my-resume/index.html" target="_blank">
+    <img src="https://img.shields.io/badge/Download%20Resume-0d1b6e?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" />
+  </a>
+</p>
+
+> 🎓 **Mahamad Gouse N** · B.E. Computer Science & Engineering (IoT, Cybersecurity & Blockchain) · CGPA: 8.43
+>
+> 🐍 Python Developer · Aspiring Decision Scientist · Infosys SpringBoard & Coursera Certified
+>
+> 📍 Mangalore, Karnataka · Expected Graduation: 2027
+
 ---
 
 <p align="center">
