@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume – Mahamad Gouse N</title>
+  <style>
+    /* ─── RESET ─────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ─── BASE ──────────────────────────────────────────── */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #eef0f4;
+      color: #1a1a2e;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* ─── PAGE SHELL ─────────────────────────────────────── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 24px auto;
+      background: #fff;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.13);
+      border-radius: 8px;
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    /* ─── HEADER (page 1 only) ───────────────────────────── */
+    .header {
+      background: linear-gradient(120deg, #0d1b6e 0%, #1565c0 55%, #0288d1 100%);
+      padding: 30px 40px 22px;
+      color: #fff;
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .header .tagline {
+      font-size: 12.5px;
+      color: #b3d4f5;
+      margin-top: 4px;
+      letter-spacing: 0.4px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px 20px;
+      margin-top: 14px;
+    }
+    .contact-grid span {
+      font-size: 12px;
+      color: #ddeeff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .contact-grid a { color: #ddeeff; text-decoration: none; }
+    .contact-grid a:hover { text-decoration: underline; }
+
+    /* ─── PAGE HEADER STRIP (page 2) ────────────────────── */
+    .page2-strip {
+      background: linear-gradient(120deg, #0d1b6e 0%, #1565c0 100%);
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page2-strip span {
+      color: #ddeeff;
+      font-size: 12px;
+    }
+    .page2-strip strong {
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* ─── TWO-COLUMN BODY ────────────────────────────────── */
+    .body {
+      display: grid;
+      grid-template-columns: 61% 39%;
+      align-items: start;
+    }
+
+    .col-main {
+      padding: 26px 28px 26px 36px;
+      border-right: 1.5px solid #e4e8f0;
+    }
+    .col-side {
+      padding: 26px 28px 26px 24px;
+      background: #f6f8fc;
+    }
+
+    /* ─── SECTION TITLE ──────────────────────────────────── */
+    .sec-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1565c0;
+      border-bottom: 2px solid #1565c0;
+      padding-bottom: 4px;
+      margin-bottom: 13px;
+    }
+
+    .section { margin-bottom: 22px; }
+
+    /* ─── CAREER OBJECTIVE ───────────────────────────────── */
+    .objective p {
+      font-size: 12.5px;
+      color: #333;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    /* ─── EDUCATION TABLE ────────────────────────────────── */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .edu-table thead tr {
+      background: #1565c0;
+      color: #fff;
+    }
+    .edu-table thead th {
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: left;
+      letter-spacing: 0.5px;
+    }
+    .edu-table tbody tr {
+      border-bottom: 1px solid #e4e8f0;
+    }
+    .edu-table tbody tr:nth-child(even) { background: #f0f4fb; }
+    .edu-table tbody td {
+      padding: 7px 10px;
+      font-size: 12px;
+      color: #333;
+      vertical-align: top;
+    }
+    .edu-table tbody td.inst {
+      font-weight: 700;
+      color: #0d1b6e;
+    }
+    .edu-table tbody td.score {
+      font-weight: 700;
+      color: #1565c0;
+      white-space: nowrap;
+    }
+
+    /* ─── SKILL GROUPS ───────────────────────────────────── */
+    .skill-group { margin-bottom: 11px; }
+    .skill-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0d1b6e;
+      margin-bottom: 5px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      background: #e3f0fd;
+      color: #1565c0;
+      border-radius: 4px;
+      padding: 2px 9px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag.dark { background: #1565c0; color: #fff; }
+
+    /* ─── PROJECTS ───────────────────────────────────────── */
+    .project { margin-bottom: 18px; }
+
+    .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .proj-name {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0d1b6e;
+    }
+    .proj-badge {
+      font-size: 10.5px;
+      color: #fff;
+      background: #1565c0;
+      border-radius: 20px;
+      padding: 2px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .proj-subtitle {
+      font-size: 12px;
+      color: #555;
+      font-style: italic;
+      font-weight: 600;
+      margin: 3px 0 6px;
+    }
+    .proj-list {
+      padding-left: 16px;
+    }
+    .proj-list li {
+      font-size: 12px;
+      color: #3a3a3a;
+      margin-bottom: 4px;
+      line-height: 1.55;
+    }
+
+    /* ─── CERTIFICATIONS ─────────────────────────────────── */
+    .cert-list { list-style: none; }
+    .cert-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px dashed #d0d8e8;
+      font-size: 12px;
+      color: #333;
+      line-height: 1.4;
+    }
+    .cert-list li:last-child { border-bottom: none; }
+    .cert-list li::before {
+      content: "✔";
+      color: #1565c0;
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .cert-badge {
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 3px;
+      padding: 1px 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-infosys { background: #fff3e0; color: #e65100; }
+    .badge-coursera { background: #e8eaf6; color: #283593; }
+    .badge-alvas    { background: #e8f5e9; color: #1b5e20; }
+
+    /* ─── ACHIEVEMENTS ───────────────────────────────────── */
+    .ach-list { list-style: none; }
+    .ach-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 4px 0;
+      font-size: 12px;
+      color: #333;
+    }
+    .ach-list li::before {
+      content: "★";
+      color: #f9a825;
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── EXTRA / LANGUAGES / STRENGTHS ─────────────────── */
+    .bullet-list { list-style: none; }
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 4px 0;
+      font-size: 12px;
+      color: #333;
+    }
+    .bullet-list li::before {
+      content: "▸";
+      color: #1565c0;
+      flex-shrink: 0;
+    }
+
+    .chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+    .chip {
+      background: #e8eaf6;
+      color: #283593;
+      border-radius: 4px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ─── DECLARATION ────────────────────────────────────── */
+    .declaration {
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+      padding: 12px 36px 16px;
+      border-top: 1px solid #e4e8f0;
+      background: #fafbfd;
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: #e4e8f0;
+      margin: 0 36px;
+    }
+
+    /* ─── PRINT ──────────────────────────────────────────── */
+    @media print {
+      body { background: #fff; }
+      .page {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 1 — Header · Objective · Education · Skills
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Mahamad Gouse N</h1>
+    <div class="tagline">
+      Computer Science &amp; Engineering Student &nbsp;|&nbsp;
+      Aspiring Decision Scientist &nbsp;|&nbsp;
+      Python Developer &nbsp;|&nbsp; IoT · Cybersecurity · Blockchain
+    </div>
+    <div class="contact-grid">
+      <span>📞 +91 9110673832</span>
+      <span>✉ <a href="mailto:mohamedgouse313@gmail.com">mohamedgouse313@gmail.com</a></span>
+      <span>📍 Karnataka, India</span>
+      <span>🔗 <a href="https://linkedin.com/in/mahamad-gouse-n" target="_blank">linkedin.com/in/mahamad-gouse-n</a></span>
+      <span>💻 <a href="https://github.com/Mdgouse123" target="_blank">github.com/Mdgouse123</a></span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ── LEFT ── -->
+    <div class="col-main">
+
+      <!-- CAREER OBJECTIVE -->
+      <div class="section objective">
+        <div class="sec-title">Career Objective</div>
+        <p>
+          Enthusiastic Computer Science &amp; Engineering student specializing in IoT, Cybersecurity,
+          and Blockchain, with strong foundations in Python, data analysis, and structured
+          problem-solving. Seeking a <strong>Trainee Decision Scientist</strong> role at Mu Sigma
+          where I can apply analytical thinking and programming skills to deliver data-driven
+          insights and contribute meaningfully to business decisions.
+        </p>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="sec-title">Education</div>
+        <table class="edu-table">
+          <thead>
+            <tr>
+              <th>Institution</th>
+              <th>Qualification</th>
+              <th>Year</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="inst">
+                Alva's Institute of Engineering &amp; Technology
+                <div style="font-size:11px;font-weight:400;color:#555;margin-top:2px;">
+                  Specialization: IoT, Cyber Security &amp; Blockchain
+                </div>
+              </td>
+              <td>B.E. – CSE</td>
+              <td style="white-space:nowrap;">2023 – 2027</td>
+              <td class="score">8.43 CGPA</td>
+            </tr>
+            <tr>
+              <td class="inst">V.K.J Pre-University College, Siruguppa</td>
+              <td>PUC – Karnataka State Board</td>
+              <td>2023</td>
+              <td class="score">73.0%</td>
+            </tr>
+            <tr>
+              <td class="inst">Vijay Marie School, Siruguppa</td>
+              <td>SSLC – Karnataka State Board</td>
+              <td>2021</td>
+              <td class="score">81.6%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- EXTRACURRICULARS -->
+      <div class="section">
+        <div class="sec-title">Extracurricular Activities</div>
+        <ul class="bullet-list">
+          <li>Participated in Fusion Techathon 4.0 — 24-Hour National Level Hackathon at Alva's Institute (May 2026)</li>
+          <li>Attended technical seminars on Cybersecurity and IoT</li>
+          <li>Collaborated in academic coding project teams</li>
+          <li>Engaged with online and local developer communities</li>
+          <li>Exploring emerging technologies: IoT, Blockchain, AI Security</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT ── -->
+    <div class="col-side">
+
+      <!-- TECHNICAL SKILLS -->
+      <div class="section">
+        <div class="sec-title">Technical Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-label">Programming Languages</div>
+          <div class="tags">
+            <span class="tag dark">Python</span>
+            <span class="tag">C</span>
+            <span class="tag">Basic Java</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Data &amp; Analysis</div>
+          <div class="tags">
+            <span class="tag dark">Data Analysis</span>
+            <span class="tag">SQL</span>
+            <span class="tag">File Handling</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Core CS Concepts</div>
+          <div class="tags">
+            <span class="tag">OOP</span>
+            <span class="tag">DSA (Basic)</span>
+            <span class="tag">Problem Solving</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Web &amp; Database</div>
+          <div class="tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Tools &amp; Environments</div>
+          <div class="tags">
+            <span class="tag dark">Git &amp; GitHub</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Windows OS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Domain Knowledge</div>
+          <div class="tags">
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Blockchain</span>
+            <span class="tag">CI/CD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="section">
+        <div class="sec-title">Languages Known</div>
+        <div class="chip-row">
+          <span class="chip">English</span>
+          <span class="chip">Kannada</span>
+          <span class="chip">Hindi</span>
+        </div>
+      </div>
+
+      <!-- STRENGTHS -->
+      <div class="section">
+        <div class="sec-title">Key Strengths</div>
+        <div class="chip-row">
+          <span class="chip">Analytical Thinking</span>
+          <span class="chip">Quick Learner</span>
+          <span class="chip">Team Collaboration</span>
+          <span class="chip">Problem Solving</span>
+          <span class="chip">Adaptability</span>
+          <span class="chip">Time Management</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- END PAGE 1 -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 2 — Projects · Certifications · Achievements
+═══════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- PAGE 2 TOP STRIP -->
+  <div class="page2-strip">
+    <strong>Mahamad Gouse N</strong>
+    <span>mohamedgouse313@gmail.com &nbsp;|&nbsp; +91 9110673832 &nbsp;|&nbsp; Page 2 of 2</span>
+  </div>
+
+  <div class="body">
+
+    <!-- ── LEFT ── -->
+    <div class="col-main">
+
+      <!-- PROJECTS -->
+      <div class="section">
+        <div class="sec-title">Academic &amp; Personal Projects</div>
+
+        <!-- YamlAnchor -->
+        <div class="project">
+          <div class="proj-header">
+            <span class="proj-name">🔧 YamlAnchor</span>
+            <span class="proj-badge">Go · Docker · Dagger · YAML</span>
+          </div>
+          <div class="proj-subtitle">CI/CD Pipeline Validator &amp; Auto-Fixer</div>
+          <ul class="proj-list">
+            <li>Loads <code>anchor.yaml</code> CI/CD pipelines into a typed Go model to catch errors <em>before</em> remote push — eliminating "push → wait → fail" cycles.</li>
+            <li>Validates pipeline dependencies, step structure, and scans for exposed secrets automatically.</li>
+            <li>Simulates pipeline steps locally using Docker/Dagger so developers get instant feedback on their machine.</li>
+            <li>Runs an <strong>auto-fixing loop</strong>: validate → run locally → capture failure → rewrite YAML → repeat until the pipeline passes or the iteration limit is reached.</li>
+          </ul>
+        </div>
+
+        <!-- Web Vulnerability Scanner -->
+        <div class="project">
+          <div class="proj-header">
+            <span class="proj-name">🛡️ Web Vulnerability Scanner</span>
+            <span class="proj-badge">Python · Requests · BeautifulSoup</span>
+          </div>
+          <div class="proj-subtitle">Automated Security Assessment Tool</div>
+          <ul class="proj-list">
+            <li>Scans web applications for XSS, SQL Injection, and Open Redirect vulnerabilities.</li>
+            <li>Checks for missing HTTP security headers and exposed sensitive files.</li>
+            <li>Generates structured reports in HTML, JSON, PDF, and DOCX formats.</li>
+          </ul>
+        </div>
+
+        <!-- Student Management System -->
+        <div class="project">
+          <div class="proj-header">
+            <span class="proj-name">🎓 Student Management System</span>
+            <span class="proj-badge">Python · OOP · File I/O</span>
+          </div>
+          <div class="proj-subtitle">Console-Based Record Management Application</div>
+          <ul class="proj-list">
+            <li>Implements full CRUD operations with file-based persistent data storage.</li>
+            <li>Uses OOP principles for modular, clean, and maintainable code structure.</li>
+          </ul>
+        </div>
+
+        <!-- Personal Expense Tracker -->
+        <div class="project">
+          <div class="proj-header">
+            <span class="proj-name">💰 Personal Expense Tracker</span>
+            <span class="proj-badge">Python · File Handling · Data Analysis</span>
+          </div>
+          <div class="proj-subtitle">Financial Data Logger &amp; Trend Analyser</div>
+          <ul class="proj-list">
+            <li>Logs and categorizes daily financial transactions interactively.</li>
+            <li>Generates automatic summary reports for expense trends — showcasing data analysis skills relevant to decision science.</li>
+            <li>Applies input validation and secure file read/write for data integrity.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT ── -->
+    <div class="col-side">
+
+      <!-- CERTIFICATIONS -->
+      <div class="section">
+        <div class="sec-title">Certifications</div>
+        <ul class="cert-list">
+          <li>
+            <div>
+              Python Foundation Certification
+              <br/><span class="cert-badge badge-infosys">Infosys SpringBoard</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              Introduction to Git and GitHub
+              <br/><span class="cert-badge badge-coursera">Coursera</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              Introduction to Data Structures and Algorithmic Foundations
+              <br/><span class="cert-badge badge-coursera">Coursera</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              Database Management Essentials
+              <br/><span class="cert-badge badge-coursera">Coursera</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              Fusion Techathon 4.0 — 24Hr National Hackathon (May 2026)
+              <br/><span class="cert-badge badge-alvas">Alva's Institute</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ACHIEVEMENTS -->
+      <div class="section">
+        <div class="sec-title">Achievements</div>
+        <ul class="ach-list">
+          <li>Built multiple end-to-end Python projects independently</li>
+          <li>Mastered Git &amp; GitHub through self-learning</li>
+          <li>Completed Python Foundation Certification from Infosys SpringBoard</li>
+          <li>Participated in national-level 24-hour hackathon</li>
+          <li>Consistent coding practice for problem-solving growth</li>
+        </ul>
+      </div>
+
+      <!-- ADDITIONAL INFO -->
+      <div class="section">
+        <div class="sec-title">Additional Info</div>
+        <table style="width:100%;font-size:12px;border-collapse:collapse;">
+          <tr>
+            <td style="padding:4px 0;color:#555;font-weight:700;width:40%;">Location</td>
+            <td style="padding:4px 0;color:#333;">Mangalore, Karnataka</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 0;color:#555;font-weight:700;">Availability</td>
+            <td style="padding:4px 0;color:#333;">Immediate / Internship</td>
+          </tr>
+          <tr>
+            <td style="padding:4px 0;color:#555;font-weight:700;">Expected Grad.</td>
+            <td style="padding:4px 0;color:#333;">2027</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DECLARATION -->
+  <div class="divider"></div>
+  <div class="declaration">
+    I hereby declare that the information provided above is true and correct to the best of my knowledge.
+    <br/>
+    <strong style="color:#1565c0;">Mahamad Gouse N</strong>
+  </div>
+
+</div>
+<!-- END PAGE 2 -->
+
+</body>
+</html>
