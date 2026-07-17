@@ -98,5 +98,5 @@ A Python-based tool that scans web applications for common vulnerabilities.
 </p>
 
 <p align="center">
-  Thanks for visiting! Feel free to connect 🤝
+  Thanks For Visiting! Feel Free To Connect 🤝
 </p>
